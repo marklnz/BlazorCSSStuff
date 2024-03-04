@@ -1,0 +1,20 @@
+﻿<div class="wrapper">
+    <div class="speakers-grid">
+        <ul>
+            @foreach(var item in GridItems)
+            {
+                <li><a href="">@item.Title<img src="@item.ImageUri.ToString()" alt="" /></a>: @item.SubTitle</li>
+            }            
+        </ul>
+    </div>
+</div>
+
+@code {
+
+    public record ImageTitleGridItem(string Title, Uri ImageUri, string SubTitle);
+    
+    [Parameter]
+    public List<ImageTitleGridItem> GridItems { get; set; }
+
+
+}
