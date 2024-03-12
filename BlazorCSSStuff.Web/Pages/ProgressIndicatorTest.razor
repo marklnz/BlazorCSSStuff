@@ -1,0 +1,15 @@
+﻿@page "/ProgressIndicatorTest"
+
+@using BlazorCSSStuff.Components.ProgressIndicator
+
+<div style="display: flex; justify-content:center;">
+    <h1>ProgressIndicator Test</h1>
+</div>
+
+<ProgressIndicator PercentComplete="@percentComplete"></ProgressIndicator>
+
+
+@code {
+    private int percentComplete = 0;
+
+}

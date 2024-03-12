@@ -1,17 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap');
 
+
+
+/*
+    Primary: 
+    Secondary:
+    Tertiary/Accent:
+    Neutral/background:
+
+
+*/
+
 @layer themes-and-reset {
     :root {
-        --content-max-width: 95ch;
-        --font-family: "Source Code Pro";
-        --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
-        --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.2rem);
-        --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
-        --fs-600: clamp(1.62rem, calc(1.37rem + 1.24vw), 2.33rem);
-        --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
-        --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
-        --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
-        --clr-body-background: whitesmoke;
         --clr-primary-700: hsl(219, 76%, 75%);
         --clr-primary-600: hsl(219, 76%, 50%);
         --clr-primary-500: hsl(219, 76%, 35%);
@@ -38,7 +39,6 @@
 
     @media (prefers-color-scheme: dark) {
         :root {
-            --clr-body-background: darkgrey;
             --clr-primary-300: hsl(219, 76%, 75%);
             --clr-primary-400: hsl(219, 76%, 50%);
             --clr-primary-500: hsl(219, 76%, 35%);
@@ -72,16 +72,24 @@
 
     html {
         color-scheme: dark light;
+        --content-max-width: 95ch;
+        --font-family: "Source Code Pro";
+        --fs-300: clamp(0.94rem, calc(0.92rem + 0.08vw), 0.98rem);
+        --fs-400: clamp(1.13rem, calc(1.06rem + 0.33vw), 1.2rem);
+        --fs-500: clamp(1.35rem, calc(1.21rem + 0.69vw), 1.75rem);
+        --fs-600: clamp(1.62rem, calc(1.37rem + 1.24vw), 2.33rem);
+        --fs-700: clamp(1.94rem, calc(1.54rem + 2.03vw), 3.11rem);
+        --fs-800: clamp(2.33rem, calc(1.7rem + 3.15vw), 4.14rem);
+        --fs-900: clamp(2.8rem, calc(1.85rem + 4.74vw), 5.52rem);
     }
 
     body {
         margin: 0;
-        background: var(--clr-body-background);
-        color: var(--clr-neutral-300);
+        background: var(--clr-neutral-900);
+        color: var(--clr-primary-300);
         font-family: var(--font-family);
         font-size: var(--fs-400);
         line-height: 1.6;
-        padding-block: 6rem;
     }
 
     img {
@@ -108,27 +116,59 @@
         max-width: 55ch;
         text-wrap: pretty;
     }
+}
 
-    .section-title {
-        font-size: var(--fs-800);
-        line-height: 1.1;
-    }
 
-    .flow > * + * {
-        margin-top: 1em;
-    }
+/* Layout */
 
-    .visually-hidden {
-        clip: rect(0 0 0 0);
-        clip-path: inset(50%);
-        height: 1px;
-        overflow: hidden;
-        position: absolute;
-        white-space: nowrap;
-        width: 1px;
+.layout {
+    display: grid;
+    height: 100vh;
+    grid-template-columns: max-content auto;
+    grid-template-areas:
+        "sidebar content";
+    column-gap: 1ch;
+}
+
+@media (max-width: 700px) {
+    .wrapper {
+        grid-template-columns: 4fr;
+        grid-template-areas:
+            "sidebar"
+            "content";
     }
 }
 
+.content {
+    grid-area: content;
+}
+
+
+.navigation {
+    grid-area: sidebar;
+    display: flex;
+    flex-direction: column;
+    padding: 1ch;
+    border-right: 1px solid var(--clr-secondary-700);
+    
+    a:is(:hover, :focus) {
+        background-color: var(--clr-primary-400, peru);
+        color: var(--clr-neutral-900, whitesmoke);
+    }
+
+    ul {
+        list-style: none;
+        margin-top: 0;
+    }
+}
+
+.nav_footer {
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* Blazor Styles */
 
 #blazor-error-ui {
     background: #ffffe0;
