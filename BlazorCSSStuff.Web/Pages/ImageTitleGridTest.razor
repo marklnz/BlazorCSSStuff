@@ -1,0 +1,28 @@
+﻿@page "/ImageTitleGridTest"
+
+<div style="display: flex; justify-content:center;">
+    <h1>ImageTitleGrid</h1>
+</div>
+
+<ImageTitleGrid GridItems="gridItems"></ImageTitleGrid>
+
+
+@code {
+
+    List<ImageTitleGrid.ImageTitleGridItem> gridItems = new()
+    {
+        new ("Miriam Suzanne", new Uri("https://assets.codepen.io/308367/miriam.jpg"), "MC"),
+        new ("Jeremy Keith", new Uri("https://assets.codepen.io/308367/jeremy.jpg"), "MC"),
+        new ("Tab Atkins", new Uri("https://assets.codepen.io/308367/tab.jpg"), "Anchor Positioning"),
+        new ("Josh Comeau", new Uri("https://assets.codepen.io/308367/josh.jpg"), "How to Teach CSS"),
+        new ("Rachel Andrew", new Uri("https://assets.codepen.io/308367/rachel.jpg"), ""),
+        new ("Matthias Ott", new Uri("https://assets.codepen.io/308367/matthias.jpg"), ""),
+        new ("Stephen Hay", new Uri("https://assets.codepen.io/308367/stephen.jpg"), ""),
+        new ("Julia Miocene", new Uri("https://assets.codepen.io/308367/julia.jpg"), "Character Modeling in CSS"),
+        new ("Roel Nieskens", new Uri("https://assets.codepen.io/308367/roel.jpg"), "Typography"),
+        new ("Roma Komarov", new Uri("https://assets.codepen.io/308367/roma.jpg"), "Impactful Experimentation"),
+        new ("Sarah Dayan", new Uri("https://assets.codepen.io/308367/sarah.jpg"), "Utility First CSS"),
+        new ("Carmen Ansio", new Uri("https://assets.codepen.io/308367/carmen.jpg"), "Scroll-Enhanced Experiences"),
+        new ("Kevin Powell", new Uri("https://assets.codepen.io/308367/kevin.jpg"), "Writing robust CSS")
+    };
+}

@@ -28,8 +28,8 @@
     }
 
     a:is(:hover, :focus) {
-        background-color: var(--clr-primary-400, hsl(219, 76%, 25%));
-        color: var(--clr-accent-700, hsl(219, 76%, 75%));
+        background-color: var(--clr-primary-300, peru);
+        color: var(--clr-neutral-900, whitesmoke);
         img {
             scale: 2;
             width: 100px;

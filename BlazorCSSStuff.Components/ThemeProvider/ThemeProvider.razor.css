@@ -1,0 +1,102 @@
+:root {
+    --clr-primary-700: hsl(219, 76%, 75%);
+    --clr-primary-600: hsl(219, 76%, 50%);
+    --clr-primary-500: hsl(219, 76%, 35%);
+    --clr-primary-400: hsl(219, 76%, 25%);
+    --clr-primary-300: hsl(219, 76%, 15%);
+    --clr-secondary-700: hsl(269, 75%, 75%);
+    --clr-secondary-600: hsl(269, 75%, 50%);
+    --clr-secondary-500: hsl(269, 75%, 35%);
+    --clr-secondary-400: hsl(269, 75%, 20%);
+    --clr-secondary-300: hsl(269, 75%, 15%);
+    --clr-accent-700: hsl(358, 72%, 75%);
+    --clr-accent-600: hsl(358, 72%, 50%);
+    --clr-accent-500: hsl(358, 72%, 35%);
+    --clr-accent-400: hsl(358, 72%, 20%);
+    --clr-accent-300: hsl(358, 72%, 15%);
+    --clr-neutral-900: hsl(219, 15%, 90%);
+    --clr-neutral-700: hsl(219, 15%, 75%);
+    --clr-neutral-600: hsl(219, 15%, 50%);
+    --clr-neutral-500: hsl(219, 15%, 35%);
+    --clr-neutral-400: hsl(219, 15%, 20%);
+    --clr-neutral-300: hsl(219, 15%, 15%);
+    --clr-neutral-100: hsl(219, 15%, 5%);
+}
+
+@media (prefers-color-scheme: dark) {
+    : root {
+        --clr-primary-300: hsl(219, 76%, 75%);
+        --clr-primary-400: hsl(219, 76%, 50%);
+        --clr-primary-500: hsl(219, 76%, 35%);
+        --clr-primary-600: hsl(219, 76%, 25%);
+        --clr-primary-700: hsl(219, 76%, 15%);
+        --clr-secondary-300: hsl(269, 75%, 75%);
+        --clr-secondary-400: hsl(269, 75%, 50%);
+        --clr-secondary-500: hsl(269, 75%, 35%);
+        --clr-secondary-600: hsl(269, 75%, 20%);
+        --clr-secondary-700: hsl(269, 75%, 15%);
+        --clr-accent-300: hsl(358, 72%, 75%);
+        --clr-accent-400: hsl(358, 72%, 50%);
+        --clr-accent-500: hsl(358, 72%, 35%);
+        --clr-accent-600: hsl(358, 72%, 20%);
+        --clr-accent-700: hsl(358, 72%, 15%);
+        --clr-neutral-100: hsl(219, 15%, 90%);
+        --clr-neutral-300: hsl(219, 15%, 75%);
+        --clr-neutral-400: hsl(219, 15%, 50%);
+        --clr-neutral-500: hsl(219, 15%, 35%);
+        --clr-neutral-600: hsl(219, 15%, 20%);
+        --clr-neutral-700: hsl(219, 15%, 15%);
+        --clr-neutral-900: hsl(219, 15%, 5%);
+    }
+}
+
+.light-theme {
+    --clr-primary-700: hsl(219, 76%, 75%);
+    --clr-primary-600: hsl(219, 76%, 50%);
+    --clr-primary-500: hsl(219, 76%, 35%);
+    --clr-primary-400: hsl(219, 76%, 25%);
+    --clr-primary-300: hsl(219, 76%, 15%);
+    --clr-secondary-700: hsl(269, 75%, 75%);
+    --clr-secondary-600: hsl(269, 75%, 50%);
+    --clr-secondary-500: hsl(269, 75%, 35%);
+    --clr-secondary-400: hsl(269, 75%, 20%);
+    --clr-secondary-300: hsl(269, 75%, 15%);
+    --clr-accent-700: hsl(358, 72%, 75%);
+    --clr-accent-600: hsl(358, 72%, 50%);
+    --clr-accent-500: hsl(358, 72%, 35%);
+    --clr-accent-400: hsl(358, 72%, 20%);
+    --clr-accent-300: hsl(358, 72%, 15%);
+    --clr-neutral-900: hsl(219, 15%, 90%);
+    --clr-neutral-700: hsl(219, 15%, 75%);
+    --clr-neutral-600: hsl(219, 15%, 50%);
+    --clr-neutral-500: hsl(219, 15%, 35%);
+    --clr-neutral-400: hsl(219, 15%, 20%);
+    --clr-neutral-300: hsl(219, 15%, 15%);
+    --clr-neutral-100: hsl(219, 15%, 5%);
+}
+
+.dark-theme {
+    --clr-primary-300: hsl(219, 76%, 75%);
+    --clr-primary-400: hsl(219, 76%, 50%);
+    --clr-primary-500: hsl(219, 76%, 35%);
+    --clr-primary-600: hsl(219, 76%, 25%);
+    --clr-primary-700: hsl(219, 76%, 15%);
+    --clr-secondary-300: hsl(269, 75%, 75%);
+    --clr-secondary-400: hsl(269, 75%, 50%);
+    --clr-secondary-500: hsl(269, 75%, 35%);
+    --clr-secondary-600: hsl(269, 75%, 20%);
+    --clr-secondary-700: hsl(269, 75%, 15%);
+    --clr-accent-300: hsl(358, 72%, 75%);
+    --clr-accent-400: hsl(358, 72%, 50%);
+    --clr-accent-500: hsl(358, 72%, 35%);
+    --clr-accent-600: hsl(358, 72%, 20%);
+    --clr-accent-700: hsl(358, 72%, 15%);
+    --clr-neutral-100: hsl(219, 15%, 90%);
+    --clr-neutral-300: hsl(219, 15%, 75%);
+    --clr-neutral-400: hsl(219, 15%, 50%);
+    --clr-neutral-500: hsl(219, 15%, 35%);
+    --clr-neutral-600: hsl(219, 15%, 20%);
+    --clr-neutral-700: hsl(219, 15%, 15%);
+    --clr-neutral-900: hsl(219, 15%, 5%);
+}
+

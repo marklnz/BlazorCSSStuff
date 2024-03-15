@@ -1,0 +1,29 @@
+﻿<div class="progressIndicator" style="--progress-percentage:@PercentComplete;" role="progressbar" aria-live="polite" aria-valuenow="@PercentComplete">
+    <svg class="progress">
+        <circle r="40%" cx="50%" cy="50%" />
+        <circle r="40%" cx="50%" cy="50%" />
+    </svg>
+    <div class="progress-text">
+        @if (PercentComplete < 100)
+        {
+            @($"{PercentComplete}%")
+        }
+        else
+        {
+            <svg class="progress-indicator__check" focusable="false" viewBox="0 -1 20 20" fill="none">
+                <path d="m8.335 12.643 7.66-7.66 1.179 1.178L8.334 15 3.032 9.697 4.21 8.518l4.125 4.125Z" fill="var(--clr-primary-500, currentColor)" />
+            </svg>
+        }
+
+    </div>   
+
+    @*  *@
+
+</div>
+
+
+@code {
+
+    [Parameter]
+    public int PercentComplete { get; set; }
+}
