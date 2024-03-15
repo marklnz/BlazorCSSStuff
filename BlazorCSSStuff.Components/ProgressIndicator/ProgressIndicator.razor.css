@@ -1,0 +1,50 @@
+
+.progressIndicator {
+    display: grid;
+    grid-template-areas: "progress";
+    justify-content: center;
+    align-items: center;
+}
+
+.progress {
+    grid-area: progress;
+    width: 8rem;
+    height: 8rem;
+}
+
+.progress circle {
+    fill: none;
+    stroke: var(--clr-neutral-700, #e0e0e0);
+    stroke-width: 0.6rem;
+    transform-origin: 50% 50%;
+    transform: rotate(-90deg);
+}
+
+.progress circle:last-child {
+    stroke: var(--clr-primary-500, #1b6ec2);
+    stroke-dasharray: calc(3.1416 * var(--progress-percentage, 0) * 1.025), 500%;
+    transition: stroke-dasharray 0.05s linear;
+}
+
+.progress-text {
+    grid-area: progress;
+    text-align: center;
+    font-weight: bold;
+}
+
+[role="progressbar"][aria-valuenow="100"] > .progress {
+    /* this is kind of hacky, but it allows the percent to be at 100% for a bit before the checkbox comes in, which feels better */
+    animation: progressComplete 0s forwards;
+    animation-delay: 100ms;
+
+    circle {
+        fill: var(--clr-success, #76f7bf);
+    }
+}
+
+.progress-indicator__check {
+    width: 6rem;
+    height: auto;
+    grid-area: progress;
+}
+

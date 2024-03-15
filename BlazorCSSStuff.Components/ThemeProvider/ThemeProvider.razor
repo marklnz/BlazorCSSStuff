@@ -1,5 +1,44 @@
-﻿<h3>ThemeProvider</h3>
+﻿<HeadContent>
+    <meta name="color-scheme" content="@CurrentTheme.ToString().ToLower()" />
+</HeadContent>
+
+<div class="@($"{CurrentTheme.ToString().ToLower()}-theme")">
+    <CascadingValue Value="this">
+        @ChildContent
+    </CascadingValue>
+</div>
 
 @code {
 
+    public enum Theme
+    {
+        Light,
+        Dark,
+        System
+    }
+
+    private Theme _currentTheme;
+
+    [Parameter]
+    public Theme CurrentTheme { 
+        get
+        {
+            return _currentTheme;
+        }
+        set
+        {
+            _currentTheme = value;           
+        }
+    }
+
+    [Parameter]
+    public RenderFragment? ChildContent { get; set; }
+
+    public void OnThemeChanged(Theme newTheme)
+    {
+        Console.WriteLine($"Before Change: Current Theme: {_currentTheme}; New Theme: {newTheme};");
+        _currentTheme = newTheme;
+        StateHasChanged();
+        Console.WriteLine($"After Change: Current Theme: {_currentTheme}; New Theme: {newTheme};");
+    }
 }

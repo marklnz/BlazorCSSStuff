@@ -1,0 +1,24 @@
+﻿<label class="switch">
+    <input type="checkbox" Checked="@(ThemeProvider.CurrentTheme == ThemeProvider.Theme.Light)" @onchange="ToggleTheme">
+    <span class="slider round"></span>
+</label>
+<span>@ThemeProvider.CurrentTheme.ToString() Theme</span>
+
+
+@code {
+
+    [CascadingParameter]
+    public ThemeProvider ThemeProvider { get; set; }
+
+    private void ToggleTheme()
+    {
+        var newTheme = ThemeProvider.CurrentTheme switch
+        {
+            ThemeProvider.Theme.Light => ThemeProvider.Theme.Dark,
+            ThemeProvider.Theme.Dark => ThemeProvider.Theme.Light,
+            _ => ThemeProvider.Theme.System
+        };
+
+        ThemeProvider.OnThemeChanged(newTheme);
+    }
+}

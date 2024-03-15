@@ -1,15 +1,116 @@
 ﻿@page "/ProgressIndicatorTest"
 
 @using BlazorCSSStuff.Components.ProgressIndicator
+@using System.Timers
 
 <div style="display: flex; justify-content:center;">
-    <h1>ProgressIndicator Test</h1>
+    <h1>ProgressIndicator</h1>
 </div>
 
-<ProgressIndicator PercentComplete="@percentComplete"></ProgressIndicator>
-
+<div class="progressTestWrapper">
+    <ProgressIndicator PercentComplete="@percentComplete"></ProgressIndicator>
+    
+    <div class="timerTestPanel">
+        <button @onclick="@(e => percentComplete = 0)">Set to 0%</button>
+        <button @onclick="@(e => percentComplete = 25)">Set to 25%</button>
+        <button @onclick="@(e => percentComplete = 57)">Set to 57%</button>
+        <button @onclick="@(e => percentComplete = 82)">Set to 82%</button>
+        <button @onclick="@(e => percentComplete = 100)">Set to 100%</button>
+        <button @onclick="TestLongProcessLargeSteps">Simulate long process in 5% steps</button>
+        <button @onclick="TestLongProcess">Simulate long process in 1% steps </button>
+        <button @onclick="TestUnevenStepsProcess">Simulate long process with uneven progress</button>
+    </div>
+</div>
 
 @code {
     private int percentComplete = 0;
+    private int percentIncrement = 5;
+    private Timer timer;
+
+    public async Task TestUnevenStepsProcess()
+    {
+        percentComplete = 0;
+        percentIncrement = 1;
+
+        // every 100 milliseconds, increment the percent complete by 1%, til we hit 100%
+        timer = new Timer(100);
+        timer.Start();
+
+        // Hook up the Elapsed event for the timer.
+        timer.Elapsed += OnUnevenTimedEvent;
+        timer.AutoReset = true;
+        timer.Enabled = true;
+    }
+
+    public async Task TestLongProcess()
+    {
+        percentComplete = 0;
+        percentIncrement = 1;
+
+        // every 100 milliseconds, increment the percent complete by 1%, til we hit 100%
+        timer = new Timer(100);
+        timer.Start();
+
+        // Hook up the Elapsed event for the timer.
+        timer.Elapsed += OnTimedEvent;
+        timer.AutoReset = true;
+        timer.Enabled = true;
+    }
+
+    public async Task TestLongProcessLargeSteps()
+    {
+        percentComplete = 0;
+        percentIncrement = 5;
+
+        // every 500 milliseconds, increment the percent complete by 5%, til we hit 100%
+        timer = new Timer(500);
+        timer.Start();
+
+        // Hook up the Elapsed event for the timer.
+        timer.Elapsed += OnTimedEvent;
+        timer.AutoReset = true;
+        timer.Enabled = true;
+    }
+
+    private void OnTimedEvent(Object source, ElapsedEventArgs e)
+    {
+        percentComplete += percentIncrement;
+        StateHasChanged();
+
+        if (percentComplete >= 100)
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+    }
+
+    private void OnUnevenTimedEvent(Object source, ElapsedEventArgs e)
+    {
+        percentIncrement = percentComplete switch
+        {
+            <= 15 => 1,
+            16 => 15,
+            > 16 and <= 35 => 1,
+            > 35 and <= 56 => 10,
+            > 56 and <= 63 => 1,
+            > 63 and <= 70 => 3,
+            > 70 and <= 85 => 2,
+            > 85 => 5
+        };
+
+        percentComplete += percentIncrement;
+        percentComplete = percentComplete > 100 ? 100 : percentComplete;
+        StateHasChanged();
+
+        // Run the first 20% using the percentincrement, then increase it by 20
+
+
+        if (percentComplete >= 100)
+        {
+            timer.Stop();
+            timer.Dispose();
+        }
+    }
+        
 
 }

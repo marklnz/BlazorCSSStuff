@@ -2,19 +2,25 @@
 
 @using BlazorCSSStuff.Components.ThemeProvider
 
+<ThemeProvider>
 <div class="layout">
     <div class="navigation">
         <a href="/">Home</a>
         <span>Components:</span>
         <ul>
-            <li><a href="/ImageTitleGridTest">ImageTitleGrid Test Page</a></li>
-            <li><a href="#">ThemeProvider Test Page</a></li>
-            <li><a href="/ProgressIndicatorTest">Progress Indicator Test Page</a></li>
+            <li><a href="/ImageTitleGridTest">ImageTitleGrid</a></li>
+            <li><a href="/ThemeProviderTest">ThemeProvider</a></li>
+            <li><a href="/ProgressIndicatorTest">Progress Indicator</a></li>
         </ul>
-        <div class="nav_footer"><ThemeProvider></ThemeProvider></div>
+        <div class="nav_footer">
+            <ThemeSwitcher/>
+        </div>
     </div>
     <div class="content">
         @Body
     </div>
-
 </div>
+</ThemeProvider>
+@code
+{
+}

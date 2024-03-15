@@ -1,0 +1,35 @@
+.timerTestPanel {
+    color: var(--clr-neutral-700);
+    font-weight: bold;
+    background: var(--clr-primary-300);
+    border: 5px solid var(--clr-neutral-700);
+    padding: 1rem;
+    margin-top: 2rem;
+    display: grid;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.timerTestPanel button {
+    cursor: pointer;
+    font: inherit;
+    background: var(--clr-neutral-900);
+    color: var(--clr-neutral-300);
+    border: 0;
+    padding: 0.5rem;
+
+    &:is(:hover, :focus-visible)
+    {
+        background: var(--clr-primary-600);
+        color: var(--clr-neutral-700);              
+    }
+
+    &:is(:focus-visible) {
+        outline: 5px solid var(--clr-neutral-700);
+    }
+}
+
+.progressTestWrapper {
+    display: grid;
+    justify-content: center;
+}
