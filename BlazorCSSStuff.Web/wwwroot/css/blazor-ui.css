@@ -90,10 +90,10 @@ p {
     display: flex;
     flex-direction: column;
     padding: 1ch;
-    border-right: 1px solid var(--clr-secondary-700);
+    border-right: 1px solid var(--clr-secondary-300);
     
     a:is(:hover, :focus) {
-        background-color: var(--clr-primary-400, peru);
+        background-color: var(--clr-primary-300, peru);
         color: var(--clr-neutral-900, whitesmoke);
     }
 }
@@ -102,8 +102,6 @@ p {
     position: absolute;
     bottom: 1ch;
 }
-
-
 /* Blazor Styles */
 
 #blazor-error-ui {
