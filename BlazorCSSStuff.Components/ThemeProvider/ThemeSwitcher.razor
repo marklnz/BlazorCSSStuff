@@ -1,4 +1,11 @@
-﻿<label class="switch">
+﻿@using LocalStorage
+@using Microsoft.JSInterop
+@using System.Text
+
+@inject IJSRuntime _jsRuntime
+
+
+<label class="switch">
     <input type="checkbox" Checked="@(ThemeProvider.CurrentTheme == ThemeProvider.Theme.Light)" @onchange="ToggleTheme">
     <span class="slider round"></span>
 </label>
@@ -10,7 +17,30 @@
     [CascadingParameter]
     public ThemeProvider ThemeProvider { get; set; }
 
-    private void ToggleTheme()
+    private LocalStorageService _localStorage;
+    private const string _storageKey = "ColorTheme";
+
+    protected override async Task OnInitializedAsync()
+    {
+        _localStorage = new LocalStorageService(_jsRuntime);
+
+        // Check local storage for setting. If found then set the theme by calling ThemeProvider.OnThemeChanged
+        var decodedBytes = Convert.FromBase64String(await _localStorage.GetItemAsync(_storageKey) ?? string.Empty);
+        var decodedText = Encoding.Unicode.GetString(decodedBytes);
+
+        if (string.IsNullOrWhiteSpace(decodedText) == false)
+        {
+            ThemeProvider.Theme theme;
+            if (Enum.TryParse<ThemeProvider.Theme>(decodedText, out theme))
+            {
+                ThemeProvider.OnThemeChanged(theme);
+            }
+        }
+
+        await base.OnInitializedAsync();        
+    }
+
+    private async Task ToggleTheme()
     {
         var newTheme = ThemeProvider.CurrentTheme switch
         {
@@ -19,9 +49,9 @@
             _ => ThemeProvider.Theme.System
         };
 
-        // TODO: Save the setting in local storage
-        
-
+        // Save the setting in local storage - does this need to happen AFTER the change is propagated though, rather than here?
+        var encodedText = Convert.ToBase64String(Encoding.Unicode.GetBytes(newTheme.ToString()));
+        _localStorage.SetItem(_storageKey, encodedText);
         ThemeProvider.OnThemeChanged(newTheme);
     }
 }
