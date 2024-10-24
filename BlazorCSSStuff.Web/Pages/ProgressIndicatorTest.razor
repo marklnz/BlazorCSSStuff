@@ -27,6 +27,8 @@
     private int percentIncrement = 5;
     private Timer timer;
 
+    //TODO: Add cancellation tokens to the timer based ones and swap the activating button to a cancel button 
+
     public async Task TestUnevenStepsProcess()
     {
         percentComplete = 0;
@@ -101,9 +103,6 @@
         percentComplete += percentIncrement;
         percentComplete = percentComplete > 100 ? 100 : percentComplete;
         StateHasChanged();
-
-        // Run the first 20% using the percentincrement, then increase it by 20
-
 
         if (percentComplete >= 100)
         {
