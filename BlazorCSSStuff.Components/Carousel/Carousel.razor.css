@@ -1,0 +1,85 @@
+﻿
+img {
+    max-height: 12em;
+}
+
+.carousel {
+    width: 100%;
+    overflow-x: auto;
+    margin: 3em auto;
+    display: flex;
+    gap: 1em;
+    scroll-behavior: smooth;
+    anchor-name: --carousel;
+    scroll-snap-type: x mandatory;
+    scroll-marker-group: after;
+}
+
+    .carousel::scroll-marker-group {
+        display: flex;
+        justify-content: center;
+        gap: .5em;
+    }
+
+.card::scroll-marker {
+    content: "";
+    height: 1em;
+    width: 1em;
+    background-color: var(--clr-neutral-500);
+    border-radius: 50%;
+}
+
+    .card::scroll-marker:target-current {
+        background-color: var(--clr-primary-700);
+    }
+
+.carousel::-webkit-scrollbar {
+    display: none;
+}
+
+.carousel::scroll-button(right), .carousel::scroll-button(left) {
+    content: "→";
+    border: none;
+    background-color: var(--clr-primary-300);
+    font-size: 3rem;
+    font-family: Consolas;
+    color: var(--clr-neutral-900);
+    height: 60px;
+    width: 60px;
+    border-radius: 50%;
+    padding-bottom: .2em;
+    cursor: pointer;
+    position: fixed;
+    position-anchor: --carousel;
+    position-area: right center;
+    translate: -50%;
+}
+
+.carousel::scroll-button(left) {
+    content: "←";
+    position-area: left center;
+    translate: 50%;
+}
+
+    .carousel::scroll-button(right):disabled, .carousel::scroll-button(left):disabled {
+        opacity: 0.5;
+        cursor: auto;
+    }
+
+.card {
+    flex: 0 0 20em;
+    /*height: 12em;*/
+    aspect-ratio: 5 / 3;
+    background-color: var(--clr-primary-300);
+    /*padding: 1em;*/
+    border-radius: .5em;
+    text-align: center;
+    align-content: center;
+    scroll-snap-align: start;
+}
+
+@media(max-width: 500px) {
+    .card {
+        flex: 0 0 100%;
+    }
+}

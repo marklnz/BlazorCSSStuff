@@ -1,0 +1,18 @@
+﻿<!-- Inspiration taken from https://www.youtube.com/watch?v=gmI5nvzv170 -->
+
+<div class="carousel">
+	@foreach (Element element in CarouselElements)
+	{
+		<img class="card" src="@element.ImageSrc" alt="@element.AltText" />
+	}
+)
+
+</div>
+
+@code {
+	public record Element(string ImageSrc, string AltText);
+
+	[Parameter, EditorRequired]
+	public List<Element> CarouselElements { get; set; }
+
+}

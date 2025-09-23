@@ -1,0 +1,29 @@
+﻿@page "/Carousel"
+
+@using BlazorCSSStuff.Components.Carousel
+
+<div style="display: flex; justify-content:center;">
+	<h1>Carousel</h1>
+</div>
+
+<!-- TODO: Fix the width up here!!! -->
+<div style="width: 78vw">
+	<Carousel CarouselElements="_elements" ></Carousel>
+</div>
+
+@code {
+
+	private List<Carousel.Element> _elements = new List<Carousel.Element>()
+	{
+		new Carousel.Element("images/img-1.jpg", "Carousel Element 1"),
+		new Carousel.Element("images/img-2.jpg", "Carousel Element 2"),
+		new Carousel.Element("images/img-3.jpg", "Carousel Element 3"),
+		new Carousel.Element("images/img-4.jpg", "Carousel Element 4"),
+		new Carousel.Element("images/img-5.jpg", "Carousel Element 5"),
+		new Carousel.Element("images/img-6.jpg", "Carousel Element 6"),
+		new Carousel.Element("images/img-7.jpg", "Carousel Element 7"),
+		new Carousel.Element("images/img-8.jpg", "Carousel Element 8"),
+	};	
+
+
+}
