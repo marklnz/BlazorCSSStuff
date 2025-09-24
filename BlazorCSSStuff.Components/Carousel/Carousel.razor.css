@@ -47,7 +47,7 @@ img {
     height: 60px;
     width: 60px;
     border-radius: 50%;
-    padding-bottom: .2em;
+    padding-bottom: .1em;
     cursor: pointer;
     position: fixed;
     position-anchor: --carousel;
